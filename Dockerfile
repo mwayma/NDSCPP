@@ -29,7 +29,7 @@ WORKDIR /app
 
 # Copy the frontend workspace and install dependencies
 COPY ndsweb/package*.json ./
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
 COPY ndsweb/ ./
 # Modify the APP_SERVER_URL so it routes to our local reverse proxy instead of localhost:7777
