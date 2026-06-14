@@ -459,7 +459,7 @@ private:
                         combinedBuffer.reserve(tempBytes);
                 }
 
-                if (!_frameQueue.empty() && (_frameQueue.size() >= kMaxBatchSize || bTimeToSend))
+                if (!_frameQueue.empty())
                 {
                     unique_lock<mutex> lock(_queueMutex);
                     
@@ -653,7 +653,7 @@ private:
                 
                 if ((errno == EWOULDBLOCK || errno == EAGAIN) && ((steady_clock::now() - startTime) < kSendTimeout))
                 {
-                    this_thread::sleep_for(100ms);
+                    this_thread::sleep_for(1ms);
                     continue;
                 }
                 logger->warn("Socket timed out for {} [{}] errno={}", _hostName, _friendlyName, errno);
