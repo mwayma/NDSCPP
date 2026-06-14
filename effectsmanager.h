@@ -188,7 +188,7 @@ public:
         {
             auto frameDuration = 1000ms / _fps; // Target duration per frame
             auto nextFrameTime = steady_clock::now();
-            constexpr auto bUseCompression = true;
+            constexpr auto bUseCompression = false;
 
             // Starting the canvas should start the effect at least one time, as many effects
             // have one-time setup in their Start() method
@@ -225,8 +225,13 @@ public:
                     now = steady_clock::now(); // Update 'now' to avoid an infinite loop
                 }
 
-                // Set the next frame target
-                nextFrameTime += frameDuration;
+                // Set the next frame target (resynchronize if we fell behind)
+                auto nowAfterRender = steady_clock::now();
+                if (nowAfterRender > nextFrameTime) {
+                    nextFrameTime = nowAfterRender + frameDuration;
+                } else {
+                    nextFrameTime += frameDuration;
+                }
             } });
     }
 

@@ -96,6 +96,7 @@ COPY --from=backend-builder /src/ndscpp .
 COPY --from=backend-builder /src/config.led .
 COPY --from=backend-builder /src/secrets.h .
 COPY --from=backend-builder /src/sample_config.json .
+COPY --from=backend-builder /src/media ./media
 
 # Copy compiled frontend assets to Nginx html directory
 COPY --from=frontend-builder /app/dist/monitor-web /var/www/html

@@ -1,546 +1,91 @@
 {
-    "canvases": [
-      {
-        "currentEffectName": "Money Video",
-        "effectsManager": {
-          "currentEffectIndex": 0,
-          "effects": [
-            {
-              "filePath": "./media/mp4/goldendollars.mp4",
-              "name": "Money Video",
-              "type": "17MP4PlaybackEffect"
-            }
-          ],
-          "fps": 24
-        },
-        "features": [
+  "canvases": [
+    {
+      "currentEffectName": "Rainbow Scroll",
+      "effectsManager": {
+        "currentEffectIndex": 0,
+        "effects": [
           {
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "Mesmerizer",
-            "height": 32,
-            "hostName": "192.168.8.161",
-            "offsetX": 0,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "timeOffset": 7.2,
-            "width": 64
+            "brightness": 1,
+            "density": 1,
+            "dotSize": 1,
+            "everyNthDot": 1,
+            "ledColorPerSecond": 0.25,
+            "ledScrollSpeed": 0,
+            "mirrored": false,
+            "name": "Rainbow Scroll",
+            "palette": {
+              "blend": true,
+              "colors": [
+                {
+                  "b": 0,
+                  "g": 0,
+                  "r": 255
+                },
+                {
+                  "b": 0,
+                  "g": 80,
+                  "r": 255
+                },
+                {
+                  "b": 0,
+                  "g": 165,
+                  "r": 255
+                },
+                {
+                  "b": 0,
+                  "g": 255,
+                  "r": 255
+                },
+                {
+                  "b": 0,
+                  "g": 255,
+                  "r": 0
+                },
+                {
+                  "b": 255,
+                  "g": 150,
+                  "r": 0
+                },
+                {
+                  "b": 255,
+                  "g": 0,
+                  "r": 0
+                },
+                {
+                  "b": 255,
+                  "g": 0,
+                  "r": 143
+                }
+              ]
+            },
+            "rampedColor": false,
+            "type": "13PaletteEffect"
           }
         ],
-        "height": 32,
-        "id": 0,
-        "name": "Mesmerizer",
-        "width": 64
+        "fps": 30
       },
-      {
-        "currentEffectName": "Starfield",
-        "effectsManager": {
-          "currentEffectIndex": 0,
-          "effects": [
-            {
-              "name": "Starfield",
-              "starCount": 100,
-              "type": "15StarfieldEffect"
-            }
-          ],
-          "fps": 24
-        },
-        "features": [
-          {
-            "bytesPerSecond": 0,
-            "channel": 0,
-            "clientBufferCount": 500,
-            "friendlyName": "Banner",
-            "height": 32,
-            "hostName": "192.168.1.98",
-            "offsetX": 0,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 512
-          }
-        ],
-        "height": 32,
-        "id": 1,
-        "name": "Banner",
-        "width": 512
-      },
-      {
-        "currentEffectName": "Yellow Window",
-        "effectsManager": {
-          "currentEffectIndex": 0,
-          "effects": [
-            {
-              "color": {
-                "b": 0,
-                "g": 112,
-                "r": 255
-              },
-              "name": "Yellow Window",
-              "type": "14SolidColorFill"
-            }
-          ],
-          "fps": 3
-        },
-        "features": [
-          {
-            "bytesPerSecond": 147,
-            "channel": 0,
-            "clientBufferCount": 21,
-            "friendlyName": "Window1",
-            "height": 1,
-            "hostName": "192.168.8.8",
-            "offsetX": 0,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 100
-          }
-        ],
-        "height": 1,
-        "id": 2,
-        "name": "Window1",
-        "width": 100
-      },
-      {
-        "currentEffectName": "Blue Window",
-        "effectsManager": {
-          "currentEffectIndex": 0,
-          "effects": [
-            {
-              "color": {
-                "b": 255,
-                "g": 0,
-                "r": 0
-              },
-              "name": "Blue Window",
-              "type": "14SolidColorFill"
-            }
-          ],
-          "fps": 3
-        },
-        "features": [
-          {
-            "bytesPerSecond": 147,
-            "channel": 0,
-            "clientBufferCount": 21,
-            "friendlyName": "Window2",
-            "height": 1,
-            "hostName": "192.168.8.9",
-            "offsetX": 0,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 100
-          }
-        ],
-        "height": 1,
-        "id": 3,
-        "name": "Window2",
-        "width": 100
-      },
-      {
-        "currentEffectName": "Green Window",
-        "effectsManager": {
-          "currentEffectIndex": 0,
-          "effects": [
-            {
-              "color": {
-                "b": 0,
-                "g": 128,
-                "r": 0
-              },
-              "name": "Green Window",
-              "type": "14SolidColorFill"
-            }
-          ],
-          "fps": 3
-        },
-        "features": [
-          {
-            "bytesPerSecond": 147,
-            "channel": 0,
-            "clientBufferCount": 21,
-            "friendlyName": "Window3",
-            "height": 1,
-            "hostName": "192.168.8.10",
-            "offsetX": 0,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 100
-          }
-        ],
-        "height": 1,
-        "id": 4,
-        "name": "Window3",
-        "width": 100
-      },
-      {
-        "currentEffectName": "Rainbow Scroll",
-        "effectsManager": {
-          "currentEffectIndex": 0,
-          "effects": [
-            {
-              "brightness": 1,
-              "density": 0.01,
-              "dotSize": 1,
-              "everyNthDot": 1,
-              "ledColorPerSecond": 2,
-              "ledScrollSpeed": 0,
-              "mirrored": false,
-              "name": "Rainbow Scroll",
-              "palette": {
-                "blend": true,
-                "colors": [
-                  {
-                    "b": 0,
-                    "g": 0,
-                    "r": 255
-                  },
-                  {
-                    "b": 0,
-                    "g": 80,
-                    "r": 255
-                  },
-                  {
-                    "b": 0,
-                    "g": 165,
-                    "r": 255
-                  },
-                  {
-                    "b": 0,
-                    "g": 255,
-                    "r": 255
-                  },
-                  {
-                    "b": 0,
-                    "g": 255,
-                    "r": 0
-                  },
-                  {
-                    "b": 255,
-                    "g": 150,
-                    "r": 0
-                  },
-                  {
-                    "b": 255,
-                    "g": 0,
-                    "r": 0
-                  },
-                  {
-                    "b": 255,
-                    "g": 0,
-                    "r": 143
-                  }
-                ]
-              },
-              "rampedColor": false,
-              "type": "13PaletteEffect"
-            }
-          ],
-          "fps": 20
-        },
-        "features": [
-          {
-            "bytesPerSecond": 24073,
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "Cupboard1",
-            "height": 1,
-            "hostName": "192.168.8.12",
-            "offsetX": 0,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 500
-          },
-          {
-            "bytesPerSecond": 31604,
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "Cupboard2",
-            "height": 1,
-            "hostName": "192.168.8.29",
-            "offsetX": 500,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 600
-          },
-          {
-            "bytesPerSecond": 7544,
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "Cupboard3",
-            "height": 1,
-            "hostName": "192.168.8.30",
-            "offsetX": 1100,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 144
-          },
-          {
-            "bytesPerSecond": 9181,
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "Cupboard4",
-            "height": 1,
-            "hostName": "192.168.8.15",
-            "offsetX": 1244,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 144
-          }
-        ],
-        "height": 1,
-        "id": 5,
-        "name": "Cabinets",
-        "width": 1388
-      },
-      {
-        "currentEffectName": "Rainbow Scroll",
-        "effectsManager": {
-          "currentEffectIndex": 0,
-          "effects": [
-            {
-              "brightness": 1,
-              "density": 1,
-              "dotSize": 4,
-              "everyNthDot": 30,
-              "ledColorPerSecond": 0,
-              "ledScrollSpeed": 5,
-              "mirrored": false,
-              "name": "Rainbow Scroll",
-              "palette": {
-                "blend": true,
-                "colors": [
-                  {
-                    "b": 0,
-                    "g": 0,
-                    "r": 255
-                  },
-                  {
-                    "b": 0,
-                    "g": 255,
-                    "r": 0
-                  },
-                  {
-                    "b": 255,
-                    "g": 0,
-                    "r": 0
-                  },
-                  {
-                    "b": 128,
-                    "g": 0,
-                    "r": 128
-                  }
-                ]
-              },
-              "rampedColor": false,
-              "type": "13PaletteEffect"
-            }
-          ],
-          "fps": 24
-        },
-        "features": [
-          {
-            "bytesPerSecond": 3843,
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "CBWEST",
-            "height": 1,
-            "hostName": "192.168.8.33",
-            "offsetX": 0,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 1151
-          },
-          {
-            "bytesPerSecond": 3058,
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "CBEAST1",
-            "height": 1,
-            "hostName": "192.168.8.5",
-            "offsetX": 1151,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": true,
-            "width": 775
-          },
-          {
-            "bytesPerSecond": 3308,
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "CBEAST2",
-            "height": 1,
-            "hostName": "192.168.8.37",
-            "offsetX": 1926,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 926
-          },
-          {
-            "bytesPerSecond": 3634,
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "CBEAST3",
-            "height": 1,
-            "hostName": "192.168.8.31",
-            "offsetX": 2852,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 1129
-          }
-        ],
-        "height": 1,
-        "id": 6,
-        "name": "Cabana",
-        "width": 3981
-      },
-      {
-        "currentEffectName": "Bouncing Balls",
-        "effectsManager": {
-          "currentEffectIndex": 0,
-          "effects": [
-            {
-              "ballCount": 5,
-              "ballSize": 1,
-              "erase": true,
-              "mirrored": true,
-              "name": "Bouncing Balls",
-              "type": "18BouncingBallEffect"
-            }
-          ],
-          "fps": 30
-        },
-        "features": [
-          {
-            "bytesPerSecond": 3531,
-            "channel": 0,
-            "clientBufferCount": 500,
-            "friendlyName": "Ceiling",
-            "height": 1,
-            "hostName": "192.168.8.60",
-            "offsetX": 0,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 758
-          }
-        ],
-        "height": 1,
-        "id": 7,
-        "name": "Ceiling",
-        "width": 758
-      },
-      {
-        "currentEffectName": "Rainbow Scroll",
-        "effectsManager": {
-          "currentEffectIndex": 0,
-          "effects": [
-            {
-              "brightness": 1,
-              "density": 1,
-              "dotSize": 1,
-              "everyNthDot": 1,
-              "ledColorPerSecond": 0.25,
-              "ledScrollSpeed": 0,
-              "mirrored": false,
-              "name": "Rainbow Scroll",
-              "palette": {
-                "blend": true,
-                "colors": [
-                  {
-                    "b": 0,
-                    "g": 0,
-                    "r": 255
-                  },
-                  {
-                    "b": 0,
-                    "g": 80,
-                    "r": 255
-                  },
-                  {
-                    "b": 0,
-                    "g": 165,
-                    "r": 255
-                  },
-                  {
-                    "b": 0,
-                    "g": 255,
-                    "r": 255
-                  },
-                  {
-                    "b": 0,
-                    "g": 255,
-                    "r": 0
-                  },
-                  {
-                    "b": 255,
-                    "g": 150,
-                    "r": 0
-                  },
-                  {
-                    "b": 255,
-                    "g": 0,
-                    "r": 0
-                  },
-                  {
-                    "b": 255,
-                    "g": 0,
-                    "r": 143
-                  }
-                ]
-              },
-              "rampedColor": false,
-              "type": "13PaletteEffect"
-            }
-          ],
-          "fps": 30
-        },
-        "features": [
-          {
-            "bytesPerSecond": 2300,
-            "channel": 0,
-            "clientBufferCount": 180,
-            "friendlyName": "Tree",
-            "height": 1,
-            "hostName": "192.168.8.167",
-            "offsetX": 0,
-            "offsetY": 0,
-            "port": 49152,
-            "redGreenSwap": false,
-            "reversed": false,
-            "width": 32
-          }
-        ],
-        "height": 1,
-        "id": 8,
-        "name": "Tree",
-        "width": 32
-      }
-    ],
-    "port": 7777
+      "features": [
+        {
+          "bytesPerSecond": 2300,
+          "channel": 0,
+          "clientBufferCount": 180,
+          "friendlyName": "Exterior",
+          "height": 1,
+          "hostName": "192.168.1.186",
+          "offsetX": 0,
+          "offsetY": 0,
+          "port": 49152,
+          "redGreenSwap": false,
+          "reversed": false,
+          "width": 144
+        }
+      ],
+      "height": 1,
+      "id": 0,
+      "name": "Exterior",
+      "width": 144
+    }
+  ],
+  "port": 7777
 }
