@@ -75,7 +75,7 @@ public:
         const uint32_t cLength = (_Mirrored ? dotcount / 2 : dotcount);
         const double cCenter = dotcount / 2.0;
         const double colorIncrement = _Density / _Palette.originalSize();
-        const double fadeFactor = 1.0 - _Brightness;
+        const uint8_t fadeFactor = static_cast<uint8_t>((1.0 - _Brightness) * 255.0);
         
         // Update state variables
         _iPixel = fmod(_iPixel + cPixelsToScroll, dotcount);
