@@ -420,10 +420,8 @@ class Controller : public IController
         }
         catch(const out_of_range &)               
         {
-            auto newId = Canvas::NextId();
-            ptrCanvas->SetId(newId);
             _canvases.push_back(ptrCanvas);    
-            return newId;
+            return ptrCanvas->Id();
         }
     }
 
@@ -518,6 +516,7 @@ inline void to_json(nlohmann::json &j, const IController &controller)
     try
     {
         j["port"] = controller.GetPort();
+        j["canvases"] = nlohmann::json::array();
         for (const auto &canvas : controller.Canvases())
             j["canvases"].push_back(*canvas);
     }
@@ -540,8 +539,11 @@ inline void from_json(const nlohmann::json &j, unique_ptr<Controller> & ptrContr
         ptrController = make_unique<Controller>(port);
 
         // Extract canvases
-        for (const auto &canvasJson : j.at("canvases"))
-            ptrController->AddCanvas(canvasJson.get<shared_ptr<ICanvas>>());
+        if (j.contains("canvases")) 
+        {
+            for (const auto &canvasJson : j.at("canvases"))
+                ptrController->AddCanvas(canvasJson.get<shared_ptr<ICanvas>>());
+        }
     } 
     catch (const exception &e) 
     {

@@ -158,6 +158,11 @@ public:
                     shared_lock readLock(_apiMutex);
                     return nlohmann::json(*_controller.GetCanvasById(id)).dump();
                 }
+                catch(const std::out_of_range& e)
+                {
+                    logger->error("Error in /api/canvases/{}: {}", id, e.what());
+                    return {crow::NOT_FOUND, string("Error: ") + e.what()};
+                }
                 catch(const exception& e)
                 {
                     logger->error("Error in /api/canvases/{}: {}", id, e.what());
@@ -215,6 +220,10 @@ public:
                     PersistController(req);
                     writeLock.unlock();
 
+                    // Start sockets for all features in the canvas
+                    for (const auto &feature : canvas->Features())
+                        feature->Socket()->Start();
+
                     auto& effectsManager = canvas->Effects();
                     // Start the effects manager of the new canvas if it wants to run and has effects
                     if (effectsManager.WantsToRun() && effectsManager.EffectCount() > 0)
@@ -239,9 +248,13 @@ public:
                         auto feature = reqJson.get<shared_ptr<ILEDFeature>>();
 
                         unique_lock writeLock(_apiMutex);
-                        auto newId = _controller.GetCanvasById(canvasId)->AddFeature(feature);
+                        auto canvas = _controller.GetCanvasById(canvasId);
+                        auto newId = canvas->AddFeature(feature);
                         PersistController(req);
                         writeLock.unlock();
+
+                        // Start socket for the new feature
+                        feature->Socket()->Start();
 
                         return nlohmann::json{{"id", newId}}.dump();
 
@@ -272,6 +285,40 @@ public:
                     {
                         logger->error("Error in /api/canvases/{}/features/{} DELETE: {}", canvasId, featureId, e.what());
                         return crow::response(crow::BAD_REQUEST, string("Error: ") + e.what());
+                    }
+                });
+
+            // Set effect on canvas
+            CROW_ROUTE(_crowApp, "/api/canvases/<int>/effects")
+                .methods(crow::HTTPMethod::PUT)([&](const crow::request& req, int canvasId) -> crow::response
+                {
+                    try
+                    {
+                        auto reqJson = nlohmann::json::parse(req.body);
+                        shared_ptr<ILEDEffect> effect;
+                        from_json(reqJson, effect);
+
+                        unique_lock writeLock(_apiMutex);
+                        auto canvas = _controller.GetCanvasById(canvasId);
+                        auto& effectsManager = canvas->Effects();
+                        
+                        vector<shared_ptr<ILEDEffect>> effects;
+                        effects.push_back(effect);
+                        effectsManager.SetEffects(effects);
+                        effectsManager.SetCurrentEffectIndex(0);
+                        effectsManager.WantToRun(true);
+                        
+                        effectsManager.Start(*canvas);
+
+                        PersistController(req);
+                        writeLock.unlock();
+
+                        return crow::response(crow::OK);
+                    }
+                    catch(const exception& e)
+                    {
+                        logger->error("Error in /api/canvases/{}/effects PUT: {}", canvasId, e.what());
+                        return {crow::BAD_REQUEST, string("Error: ") + e.what()};
                     }
                 });
 

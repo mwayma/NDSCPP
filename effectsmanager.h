@@ -349,7 +349,8 @@ inline void to_json(nlohmann::json &j, const IEffectsManager &manager)
     {
         {"fps", manager.GetFPS()},
         {"currentEffectIndex", manager.GetCurrentEffect()},
-        {"running", manager.IsRunning()}
+        {"running", manager.IsRunning()},
+        {"effects", nlohmann::json::array()}
     };
         
     for (const auto &effect : manager.Effects())
@@ -360,9 +361,9 @@ inline void to_json(nlohmann::json &j, const IEffectsManager &manager)
 
 inline void from_json(const nlohmann::json &j, IEffectsManager &manager)
 {
-    manager.SetFPS(j.at("fps").get<uint16_t>());
-    manager.SetEffects(j.at("effects").get<vector<shared_ptr<ILEDEffect>>>());
-    manager.SetCurrentEffectIndex(j.at("currentEffectIndex").get<int>());
+    if (j.contains("fps")) manager.SetFPS(j.at("fps").get<uint16_t>());
+    if (j.contains("effects")) manager.SetEffects(j.at("effects").get<vector<shared_ptr<ILEDEffect>>>());
+    if (j.contains("currentEffectIndex")) manager.SetCurrentEffectIndex(j.at("currentEffectIndex").get<int>());
     
     // We deserialize the running state to a running *preference*. Directly starting the manager after
     // deserialization could create problems, and without having the canvas we can't start it anyway.
