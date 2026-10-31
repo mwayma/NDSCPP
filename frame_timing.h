@@ -9,7 +9,8 @@
 inline double SharedFrameLeadSeconds(std::span<const uint32_t> capacities, uint16_t fps)
 {
     if (capacities.empty() || fps == 0) return 0.0;
-    constexpr double fillRatio = 0.80;
+    // Keep half the smallest queue free for clock skew and delivery jitter.
+    constexpr double fillRatio = 0.50;
     return (*std::min_element(capacities.begin(), capacities.end()) * fillRatio) / fps;
 }
 
