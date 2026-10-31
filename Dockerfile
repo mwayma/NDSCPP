@@ -21,6 +21,7 @@ WORKDIR /src
 COPY . .
 
 # Build the C++ application (Make will also copy the .example files to their required locations)
+RUN clang++ -std=c++20 tests/frame_timing_test.cpp -o /tmp/frame_timing_test && /tmp/frame_timing_test
 RUN make -j$(nproc)
 
 # Stage 2: Build Angular Frontend (NDSWeb)
@@ -106,3 +107,4 @@ EXPOSE 80
 
 # Start supervisor which manages nginx and ndscpp
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
