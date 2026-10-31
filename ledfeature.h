@@ -16,6 +16,7 @@ using namespace chrono;
 #include "interfaces.h"
 #include "utilities.h"
 #include "socketchannel.h"
+#include "frame_timing.h"
 
 class LEDFeature : public ILEDFeature
 {
@@ -82,8 +83,11 @@ public:
 
     double TimeOffset () const override
     {
-        constexpr auto kBufferFillRatio = 0.80;
-        return(_clientBufferCount * kBufferFillRatio) / _canvas->Effects().GetFPS();
+        if (!_canvas) return 0.0;
+        vector<uint32_t> capacities;
+        for (const auto& feature : _canvas->Features())
+            capacities.push_back(feature->ClientBufferCount());
+        return SharedFrameLeadSeconds(capacities, _canvas->Effects().GetFPS());
     }
     
     virtual shared_ptr<ISocketChannel> Socket() override 
@@ -170,8 +174,9 @@ public:
         // Calculate epoch time
         auto now = system_clock::now();
         auto epoch = duration_cast<microseconds>(now.time_since_epoch()).count();
-        uint64_t seconds = epoch / 1'000'000 + TimeOffset();
-        uint64_t microseconds = epoch % 1'000'000;
+        const auto timestamp = FrameTimestampWithLead(epoch, TimeOffset());
+        const uint64_t seconds = timestamp.seconds;
+        const uint64_t microseconds = timestamp.microseconds;
 
         auto pixelData = GetPixelData();
 
@@ -229,4 +234,5 @@ inline void from_json(const nlohmann::json& j, shared_ptr<ILEDFeature> & feature
         j.at("clientBufferCount").get<uint32_t>()
     );
 }
+
 
